@@ -13,9 +13,12 @@ import com.bumptech.glide.Glide
 import com.example.test.R
 import com.example.test.databinding.ActivityMealBinding
 import com.example.test.databinding.FragmentHomeBinding
+import com.example.test.db.MealDataBase
 import com.example.test.fragments.HomeFragment
 import com.example.test.pojo.Meal
+import com.example.test.utils.toast
 import com.example.test.viewmodel.MealViewModel
+import com.example.test.viewmodel.MealViewModelfactory
 
 class MealActivity : AppCompatActivity() {
     private val binding: ActivityMealBinding by lazy {
@@ -29,7 +32,13 @@ class MealActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mealMVVM = ViewModelProviders.of(this)[MealViewModel::class.java]
+
+        val mealDatabase = MealDataBase.getInstance(this)
+        val viewModelFactory = MealViewModelfactory(mealDatabase)
+        mealMVVM = ViewModelProvider(this,viewModelFactory)[MealViewModel::class.java]
+
+//        mealMVVM = ViewModelProviders.of(this)[MealViewModel::class.java]
+
         getMealInformationFromIntent()
         setInformationViews()
         loadingCase()
@@ -38,8 +47,18 @@ class MealActivity : AppCompatActivity() {
         binding.imgYoutube.setOnClickListener {
             openYouTube()
         }
+        onFavoriteClick()
 
         setContentView(binding.root)
+    }
+
+    private fun onFavoriteClick() {
+        binding.addToFav.setOnClickListener {
+            mealToSave?.let {
+                mealMVVM.insertMeal(it)
+                toast("Meal is save")
+            }
+        }
     }
 
     private fun openYouTube() {
@@ -47,15 +66,17 @@ class MealActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    private var mealToSave: Meal? = null
     private fun observeMealDetailsLivedata() {
         mealMVVM.observeMealDetailLiveData().observe(this,object  : Observer<Meal>{
             @SuppressLint("SetTextI18n")
             override fun onChanged(t: Meal?) {
                 val meal = t
+                mealToSave = meal
                 binding.tvCategory.text = "Category : ${meal!!.strCategory}"
                 binding.tvArea.text = "Area : ${meal.strArea}"
                 binding.tvInstructionsSteps.text = meal.strInstructions
-                youTubeLink = meal.strYoutube
+                youTubeLink = meal.strYoutube!!
                 responseCase()
             }
 

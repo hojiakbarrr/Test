@@ -29,6 +29,8 @@ class CategoryMealsActivity : AppCompatActivity() {
         preparRecyclerView()
         categoryMVVM = ViewModelProviders.of(this)[CategoryMealsViewModel::class.java]
         categoryMVVM.getCategoryMeal(intent.getStringExtra(HomeFragment.CATEGORY_NAME)!!)
+        binding.tvCategoryCount.setText(intent.getStringExtra(HomeFragment.CATEGORY_NAME)!!)
+
         categoryMVVM.observeCategoryList().observe(this, Observer {mealsList->
             categoryMealsAdapter.setMealsList(mealsList)
         })

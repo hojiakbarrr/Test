@@ -3,16 +3,14 @@ package com.example.test.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
-import androidx.recyclerview.widget.AsyncListUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.test.databinding.MealItemBinding
 import com.example.test.pojo.Meal
-import com.example.test.pojo.MealsByCategory
 
-class FavoritesMealAdapter :
-    RecyclerView.Adapter<FavoritesMealAdapter.FavoritesMealsAdapterViewHolder>() {
+class MealsAdapter :
+    RecyclerView.Adapter<MealsAdapter.FavoritesMealsAdapterViewHolder>() {
     lateinit var onClick:((Meal)->Unit)
 
     inner class FavoritesMealsAdapterViewHolder(val binding: MealItemBinding) :

@@ -6,9 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.test.R
 import com.example.test.activities.CategoryMealsActivity
 import com.example.test.activities.MainActivity
 import com.example.test.activities.MealActivity
@@ -53,7 +55,14 @@ class HomeFragment : Fragment() {
         binding.randomMeal.setOnClickListener {
             onclicck()
         }
+        onSearchIconClick()
         return binding.root
+    }
+
+    private fun onSearchIconClick() {
+        binding.imgSearch.setOnClickListener {
+            findNavController().navigate(R.id.from_homeFragment_to_searchFragment)
+        }
     }
 
 

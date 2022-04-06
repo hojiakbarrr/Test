@@ -11,12 +11,10 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.test.R
 import com.example.test.activities.MainActivity
 import com.example.test.activities.MealActivity
-import com.example.test.adapters.FavoritesMealAdapter
+import com.example.test.adapters.MealsAdapter
 import com.example.test.databinding.FragmentFavoritesBinding
-import com.example.test.databinding.FragmentHomeBinding
 import com.example.test.viewmodel.HomeViewModel
 import com.google.android.material.snackbar.Snackbar
 
@@ -25,12 +23,12 @@ class FavoritesFragment : Fragment() {
         FragmentFavoritesBinding.inflate(layoutInflater)
     }
     private lateinit var viewmodel: HomeViewModel
-    private lateinit var favoritesAdapter: FavoritesMealAdapter
+    private lateinit var favoritesAdapter: MealsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewmodel = (activity as MainActivity).viewModel
-        favoritesAdapter = FavoritesMealAdapter()
+        favoritesAdapter = MealsAdapter()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

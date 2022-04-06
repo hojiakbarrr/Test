@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/TechLine/AndroidStudioProjects/Test/app/src/main/res/drawable/search_box_background.xml" value="0.1" />
+        <entry key="..\:/Users/TechLine/AndroidStudioProjects/Test/app/src/main/res/layout/fragment_search.xml" value="0.18" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Test/app/src/main/res/font/fonts.xml" value="0.43214285714285716" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Test/app/src/main/res/layout/activity_category_meals.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Test/app/src/main/res/layout/activity_main.xml" value="0.1" />

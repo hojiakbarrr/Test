@@ -7,10 +7,9 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.example.test.R
 import com.example.test.databinding.ActivityMainBinding
-import com.example.test.databinding.FragmentHomeBinding
 import com.example.test.db.MealDataBase
 import com.example.test.viewmodel.HomeViewModel
-import com.example.test.viewmodel.HomeViewModelfactory
+import com.example.test.viewmodel.HomeViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -19,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     }
     val viewModel: HomeViewModel by lazy {
         val mealDatabase = MealDataBase.getInstance(this)
-        val homeViewModelProviderFactory = HomeViewModelfactory(mealDatabase)
+        val homeViewModelProviderFactory = HomeViewModelFactory(mealDatabase)
         ViewModelProvider(this,homeViewModelProviderFactory)[HomeViewModel::class.java]
     }
 

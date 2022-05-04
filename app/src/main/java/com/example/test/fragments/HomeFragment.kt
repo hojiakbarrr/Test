@@ -69,7 +69,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         popularRecycler()
-        viewModel.getRandomMeal()
+//        viewModel.getRandomMeal()
         observerRandomMeal()
         viewModel.getPopularItems()
         observePopularItemLiveData()
